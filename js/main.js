@@ -1,8 +1,25 @@
-/* Verma Motwani & Co. — shared interactions */
+/* Verma Motwani & Co. — shared interactions (v2) */
 (function () {
   "use strict";
 
   document.documentElement.classList.remove("js-disabled");
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Scroll progress bar ---------- */
+  var progressBar = document.querySelector(".scroll-progress");
+  function updateProgress() {
+    if (!progressBar) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + "%";
+  }
+  if (progressBar) {
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+  }
 
   /* ---------- Header solid-on-scroll ---------- */
   var header = document.querySelector(".site-header");
@@ -34,64 +51,6 @@
     });
   }
 
-  /* ---------- Docket rail (homepage only) ---------- */
-  var docketLinks = document.querySelectorAll(".docket-rail a");
-  if (docketLinks.length) {
-    var sections = [];
-    docketLinks.forEach(function (link) {
-      var id = link.getAttribute("href").replace("#", "");
-      var section = document.getElementById(id);
-      if (section) sections.push({ link: link, section: section });
-    });
-
-    docketLinks.forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        var id = link.getAttribute("href").replace("#", "");
-        var target = document.getElementById(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    });
-
-    if ("IntersectionObserver" in window && sections.length) {
-      var railObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            var match = sections.find(function (s) { return s.section === entry.target; });
-            if (!match) return;
-            if (entry.isIntersecting) {
-              docketLinks.forEach(function (l) { l.classList.remove("is-active"); });
-              match.link.classList.add("is-active");
-            }
-          });
-        },
-        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-      );
-      sections.forEach(function (s) { railObserver.observe(s.section); });
-    }
-  }
-
-  /* ---------- Scroll-reveal ---------- */
-  var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && revealEls.length) {
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-  }
-
   /* ---------- Disclaimer overlay (homepage only) ---------- */
   var overlay = document.querySelector(".disclaimer-overlay");
   if (overlay) {
@@ -114,6 +73,177 @@
     }
   }
 
+  /* ---------- Hero cursor-follow glow ---------- */
+  var heroLeft = document.querySelector(".hero-left");
+  if (heroLeft && !prefersReducedMotion) {
+    heroLeft.addEventListener("pointermove", function (e) {
+      var rect = heroLeft.getBoundingClientRect();
+      var mx = ((e.clientX - rect.left) / rect.width) * 100;
+      var my = ((e.clientY - rect.top) / rect.height) * 100;
+      heroLeft.style.setProperty("--mx", mx + "%");
+      heroLeft.style.setProperty("--my", my + "%");
+    });
+  }
+
+  /* ---------- Right-edge dot nav ---------- */
+  var dotLinks = document.querySelectorAll(".dot-nav a");
+  if (dotLinks.length) {
+    var dotSections = [];
+    dotLinks.forEach(function (link) {
+      var id = link.getAttribute("href").replace("#", "");
+      var section = document.getElementById(id);
+      if (section) dotSections.push({ link: link, section: section });
+    });
+
+    dotLinks.forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var id = link.getAttribute("href").replace("#", "");
+        var target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+        }
+      });
+    });
+
+    if ("IntersectionObserver" in window && dotSections.length) {
+      var dotObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            var match = dotSections.find(function (s) { return s.section === entry.target; });
+            if (!match) return;
+            if (entry.isIntersecting) {
+              dotLinks.forEach(function (l) { l.classList.remove("is-active"); });
+              match.link.classList.add("is-active");
+            }
+          });
+        },
+        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+      );
+      dotSections.forEach(function (s) { dotObserver.observe(s.section); });
+    }
+  }
+
+  /* ---------- Count-up stats ---------- */
+  var countEls = document.querySelectorAll("[data-count]");
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    var suffix = el.getAttribute("data-suffix") || "";
+    var duration = 1600;
+    var startTime = null;
+
+    if (prefersReducedMotion) {
+      el.textContent = target + suffix;
+      return;
+    }
+
+    function step(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.round(target * eased);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (countEls.length) {
+    if ("IntersectionObserver" in window) {
+      var countObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animateCount(entry.target);
+              countObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      countEls.forEach(function (el) { countObserver.observe(el); });
+    } else {
+      countEls.forEach(function (el) {
+        el.textContent = el.getAttribute("data-count") + (el.getAttribute("data-suffix") || "");
+      });
+    }
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  if (!prefersReducedMotion) {
+    document.querySelectorAll(".btn").forEach(function (btn) {
+      btn.addEventListener("mousemove", function (e) {
+        var rect = btn.getBoundingClientRect();
+        var offsetX = e.clientX - (rect.left + rect.width / 2);
+        var offsetY = e.clientY - (rect.top + rect.height / 2);
+        btn.style.transform = "translate(" + (offsetX * 0.12) + "px, " + (offsetY * 0.12) + "px)";
+      });
+      btn.addEventListener("mouseleave", function () {
+        btn.style.transform = "";
+      });
+    });
+  }
+
+  /* ---------- Scroll-reveal ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  /* ---------- People page: filter + search ---------- */
+  var peopleGrid = document.querySelector("[data-people-grid]");
+  if (peopleGrid) {
+    var pills = document.querySelectorAll(".filter-pill");
+    var searchInput = document.querySelector(".people-search input");
+    var cards = peopleGrid.querySelectorAll(".person-card");
+    var emptyMsg = document.querySelector(".people-empty");
+    var activeGroup = "all";
+
+    function applyFilters() {
+      var query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var group = card.getAttribute("data-group");
+        var name = (card.getAttribute("data-name") || "").toLowerCase();
+        var matchesGroup = activeGroup === "all" || group === activeGroup;
+        var matchesSearch = query === "" || name.indexOf(query) !== -1;
+        var visible = matchesGroup && matchesSearch;
+        card.hidden = !visible;
+        if (visible) visibleCount++;
+      });
+      if (emptyMsg) {
+        emptyMsg.classList.toggle("is-visible", visibleCount === 0);
+      }
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        pills.forEach(function (p) { p.classList.remove("is-active"); });
+        pill.classList.add("is-active");
+        activeGroup = pill.getAttribute("data-filter");
+        applyFilters();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", applyFilters);
+    }
+
+    applyFilters();
+  }
+
   /* ---------- Contact form fake-submit ---------- */
   var contactForm = document.querySelector(".contact-form");
   if (contactForm) {
@@ -125,7 +255,7 @@
         confirmMsg.classList.add("is-visible");
         confirmMsg.setAttribute("tabindex", "-1");
         confirmMsg.focus();
-        confirmMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+        confirmMsg.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "center" });
       }
     });
   }

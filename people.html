@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<div class="scroll-progress"></div>
+
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
@@ -30,7 +32,11 @@
       <span></span>
     </button>
   </div>
-  <div class="mobile-nav" id="mobileNav">
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-texture" aria-hidden="true"></div>
+  <div class="mobile-nav-links">
     <span class="eyebrow">Menu</span>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -39,7 +45,7 @@
     <a href="insights.html">Insights</a>
     <a href="contact.html">Contact</a>
   </div>
-</header>
+</div>
 
 <main>
 
@@ -52,90 +58,140 @@
     </div>
   </header>
 
-  <section class="people-section">
-    <div class="container">
-      <div class="group-head reveal">
-        <span class="eyebrow"><span class="num">Section 01</span></span>
-        <h2>Founding &amp; Senior Partners</h2>
+  <div class="container">
+    <div class="people-toolbar">
+      <div class="filter-pills" role="group" aria-label="Filter people by seniority">
+        <button type="button" class="filter-pill is-active" data-filter="all">All</button>
+        <button type="button" class="filter-pill" data-filter="founding">Founding &amp; Senior</button>
+        <button type="button" class="filter-pill" data-filter="partner">Partners</button>
       </div>
-      <div class="people-grid">
-        <div class="person-card reveal">
-          <div class="avatar navy">AV</div>
-          <div class="person-body">
-            <h3>Arvind Verma</h3>
-            <span class="person-role">Founding Partner &middot; M&amp;A</span>
-            <p>Co-founded the firm in 1994; leads on landmark cross-border mergers and acquisitions.</p>
-          </div>
-        </div>
-        <div class="person-card reveal">
-          <div class="avatar ivory">RM</div>
-          <div class="person-body">
-            <h3>Ranjana Motwani</h3>
-            <span class="person-role">Founding Partner &middot; Arbitration</span>
-            <p>Co-founded the firm in 1994; one of India&rsquo;s most cited international arbitration
-              counsel.</p>
-          </div>
-        </div>
-        <div class="person-card reveal">
-          <div class="avatar navy">KS</div>
-          <div class="person-body">
-            <h3>Kabir Saxena</h3>
-            <span class="person-role">Senior Partner &middot; Banking &amp; Finance</span>
-            <p>Advises lenders and borrowers on syndicated financing and complex restructurings.</p>
-          </div>
-        </div>
-        <div class="person-card reveal">
-          <div class="avatar ivory">MI</div>
-          <div class="person-body">
-            <h3>Meera Iyer</h3>
-            <span class="person-role">Senior Partner &middot; Competition Law</span>
-            <p>Leads the firm&rsquo;s CCI practice, advising on merger control and cartel defence.</p>
-          </div>
-        </div>
+      <div class="people-search">
+        <label class="visually-hidden" for="people-search-input">Search people by name</label>
+        <input type="text" id="people-search-input" placeholder="Search by name&hellip;" autocomplete="off">
       </div>
     </div>
-  </section>
+  </div>
 
   <section class="people-section">
     <div class="container">
-      <div class="group-head reveal">
-        <span class="eyebrow"><span class="num">Section 02</span></span>
-        <h2>Partners</h2>
-      </div>
-      <div class="people-grid">
-        <div class="person-card reveal">
-          <div class="avatar ivory">RC</div>
-          <div class="person-body">
-            <h3>Rohan Chatterjee</h3>
-            <span class="person-role">Partner &middot; Private Equity &amp; VC</span>
+      <div class="people-grid" data-people-grid>
+
+        <article class="person-card reveal" data-group="founding" data-name="Arvind Verma">
+          <div class="photo-well navy">
+            AV
+            <div class="nameplate">
+              <h3>Arvind Verma</h3>
+              <span class="person-role">Founding Partner &middot; M&amp;A</span>
+            </div>
+          </div>
+          <div class="person-bio">
+            <p>Co-founded the firm in 1994; leads on landmark cross-border mergers and acquisitions.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="founding" data-name="Ranjana Motwani">
+          <div class="photo-well ivory">
+            RM
+            <div class="nameplate">
+              <h3>Ranjana Motwani</h3>
+              <span class="person-role">Founding Partner &middot; Arbitration</span>
+            </div>
+          </div>
+          <div class="person-bio">
+            <p>Co-founded the firm in 1994; one of India&rsquo;s most cited international arbitration
+              counsel.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="founding" data-name="Kabir Saxena">
+          <div class="photo-well navy-2">
+            KS
+            <div class="nameplate">
+              <h3>Kabir Saxena</h3>
+              <span class="person-role">Senior Partner &middot; Banking &amp; Finance</span>
+            </div>
+          </div>
+          <div class="person-bio">
+            <p>Advises lenders and borrowers on syndicated financing and complex restructurings.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="founding" data-name="Meera Iyer">
+          <div class="photo-well ivory">
+            MI
+            <div class="nameplate">
+              <h3>Meera Iyer</h3>
+              <span class="person-role">Senior Partner &middot; Competition Law</span>
+            </div>
+          </div>
+          <div class="person-bio">
+            <p>Leads the firm&rsquo;s CCI practice, advising on merger control and cartel defence.</p>
+          </div>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="partner" data-name="Rohan Chatterjee">
+          <div class="photo-well navy">
+            RC
+            <div class="nameplate">
+              <h3>Rohan Chatterjee</h3>
+              <span class="person-role">Partner &middot; Private Equity &amp; VC</span>
+            </div>
+          </div>
+          <div class="person-bio">
             <p>Advises growth-stage founders and funds on investment rounds and exits.</p>
           </div>
-        </div>
-        <div class="person-card reveal">
-          <div class="avatar navy">AK</div>
-          <div class="person-body">
-            <h3>Ayesha Khan</h3>
-            <span class="person-role">Partner &middot; Insolvency &amp; Restructuring</span>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="partner" data-name="Ayesha Khan">
+          <div class="photo-well ivory">
+            AK
+            <div class="nameplate">
+              <h3>Ayesha Khan</h3>
+              <span class="person-role">Partner &middot; Insolvency &amp; Restructuring</span>
+            </div>
+          </div>
+          <div class="person-bio">
             <p>Represents creditors and resolution professionals in CIRP proceedings under the IBC.</p>
           </div>
-        </div>
-        <div class="person-card reveal">
-          <div class="avatar ivory">VN</div>
-          <div class="person-body">
-            <h3>Vikram Nair</h3>
-            <span class="person-role">Partner &middot; Technology &amp; Data Privacy</span>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="partner" data-name="Vikram Nair">
+          <div class="photo-well navy-2">
+            VN
+            <div class="nameplate">
+              <h3>Vikram Nair</h3>
+              <span class="person-role">Partner &middot; Technology &amp; Data Privacy</span>
+            </div>
+          </div>
+          <div class="person-bio">
             <p>Advises on DPDP Act compliance, data localisation and technology transactions.</p>
           </div>
-        </div>
-        <div class="person-card reveal">
-          <div class="avatar navy">SK</div>
-          <div class="person-body">
-            <h3>Sanya Kapoor</h3>
-            <span class="person-role">Partner &middot; Employment Law</span>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
+        <article class="person-card reveal" data-group="partner" data-name="Sanya Kapoor">
+          <div class="photo-well ivory">
+            SK
+            <div class="nameplate">
+              <h3>Sanya Kapoor</h3>
+              <span class="person-role">Partner &middot; Employment Law</span>
+            </div>
+          </div>
+          <div class="person-bio">
             <p>Counsels employers on the new labour codes and senior-level workforce matters.</p>
           </div>
-        </div>
+          <span class="card-arrow" aria-hidden="true">&rarr;</span>
+        </article>
+
       </div>
+
+      <p class="people-empty">No one matches that search.</p>
     </div>
   </section>
 
