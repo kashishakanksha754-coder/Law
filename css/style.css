@@ -1045,9 +1045,9 @@ input, textarea, select { font-family: inherit; }
   object-fit: cover;
   z-index: 0;
 }
-.kb-out { animation: kenburns-out 22s ease-in-out infinite alternate; }
+.kb-out { animation: kenburns-out 5s ease-in-out infinite alternate; }
 @keyframes kenburns-out {
-  from { transform: scale(1.08); }
+  from { transform: scale(1.13); }
   to { transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
