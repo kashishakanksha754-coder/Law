@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,8 +19,15 @@
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 11L9 17M20 11L31 17M20 11V29" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 17V23M31 17V23" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M14 29H26" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="20" cy="11" r="2.4" fill="var(--brass)"/>
+        </svg>
+      </span>
       <span class="brand-name">Verma Motwani &amp; Co.</span>
-      <span class="brand-mark">VM&amp;CO</span>
     </a>
     <nav class="main-nav" aria-label="Primary">
       <a href="index.html">Home</a>
@@ -37,6 +46,17 @@
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-texture" aria-hidden="true"></div>
   <div class="mobile-nav-panel">
+    <a href="index.html" class="mobile-nav-brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 11L9 17M20 11L31 17M20 11V29" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 17V23M31 17V23" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M14 29H26" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="20" cy="11" r="2.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-name">Verma Motwani &amp; Co.</span>
+    </a>
     <div class="mobile-nav-icons">
       <button type="button" class="mobile-icon-btn mobile-search-btn" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.2" y2="16.2"></line></svg>
@@ -236,7 +256,17 @@
     </div>
     <div class="footer-grid">
       <div class="footer-col">
-        <div class="footer-brand">Verma Motwani &amp; Co.</div>
+        <div class="footer-brand">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 11L9 17M20 11L31 17M20 11V29" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 17V23M31 17V23" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M14 29H26" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="20" cy="11" r="2.4" fill="var(--brass)"/>
+        </svg>
+          </span>
+          <span>Verma Motwani &amp; Co.</span>
+        </div>
         <p>A full-service Indian law firm advising on corporate, disputes and regulatory matters since
           1994, with an on-the-ground presence across Delhi, Mumbai and Bengaluru.</p>
         <div class="footer-social">

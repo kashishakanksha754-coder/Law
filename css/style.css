@@ -180,27 +180,25 @@ input, textarea, select { font-family: inherit; }
 }
 .brand {
   display: flex;
-  align-items: baseline;
-  gap: .6em;
+  align-items: center;
+  gap: 11px;
   color: var(--ivory);
   transition: color .35s var(--ease);
 }
 .site-header.is-solid .brand { color: var(--ink-navy); }
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+}
+.brand-icon svg { width: 100%; height: 100%; }
 .brand-name {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   white-space: nowrap;
 }
-.brand-mark {
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  letter-spacing: .12em;
-  color: var(--brass-light);
-  border: 1px solid currentColor;
-  padding: .2em .5em;
-}
-.site-header.is-solid .brand-mark { color: var(--brass); }
 
 .main-nav { display: flex; align-items: center; gap: 2.2rem; }
 .main-nav a {
@@ -293,6 +291,24 @@ input, textarea, select { font-family: inherit; }
   align-items: center;
   gap: 1.1rem;
 }
+.mobile-nav-brand {
+  position: absolute;
+  top: 22px;
+  left: 8vw;
+  right: 104px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ivory);
+  overflow: hidden;
+}
+.mobile-nav-brand .brand-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.mobile-nav-brand .brand-name {
+  font-size: 1.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .mobile-icon-btn {
   display: flex;
   align-items: center;
@@ -352,6 +368,8 @@ input, textarea, select { font-family: inherit; }
   .mobile-nav { grid-template-columns: 26vw 1fr; }
   .mobile-nav-panel { padding: 0 7vw; }
   .mobile-nav-icons { right: 7vw; }
+  .mobile-nav-brand { left: 7vw; }
+  .mobile-nav-brand .brand-name { font-size: .92rem; }
   .mobile-nav-social { right: 7vw; }
   .mobile-nav-links a { font-size: 19px; }
 }
@@ -642,7 +660,16 @@ input, textarea, select { font-family: inherit; }
 }
 .footer-col p, .footer-col li { font-size: .92rem; margin-bottom: .7em; }
 .footer-col a:hover { color: var(--ivory); }
-.footer-brand { font-family: var(--font-display); color: var(--ivory); font-size: 1.3rem; margin-bottom: .5em; }
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  color: var(--ivory);
+  font-size: 1.3rem;
+  margin-bottom: .8em;
+}
+.footer-brand .brand-icon { width: 32px; height: 32px; }
 .footer-bottom {
   display: flex;
   justify-content: space-between;
