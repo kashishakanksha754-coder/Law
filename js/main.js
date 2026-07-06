@@ -78,15 +78,29 @@
   }
 
   /* ---------- Hero cursor-follow glow ---------- */
-  var heroLeft = document.querySelector(".hero-left");
-  if (heroLeft && !prefersReducedMotion) {
-    heroLeft.addEventListener("pointermove", function (e) {
-      var rect = heroLeft.getBoundingClientRect();
+  var heroMedia = document.querySelector(".hero-media");
+  if (heroMedia && !prefersReducedMotion) {
+    heroMedia.addEventListener("pointermove", function (e) {
+      var rect = heroMedia.getBoundingClientRect();
       var mx = ((e.clientX - rect.left) / rect.width) * 100;
       var my = ((e.clientY - rect.top) / rect.height) * 100;
-      heroLeft.style.setProperty("--mx", mx + "%");
-      heroLeft.style.setProperty("--my", my + "%");
+      heroMedia.style.setProperty("--mx", mx + "%");
+      heroMedia.style.setProperty("--my", my + "%");
     });
+  }
+
+  /* ---------- Hero background video: respect reduced motion, fall back to poster ---------- */
+  var heroVideo = document.querySelector(".hero-media-video");
+  if (heroVideo) {
+    if (prefersReducedMotion) {
+      heroVideo.pause();
+      heroVideo.removeAttribute("autoplay");
+      heroVideo.style.display = "none";
+    } else {
+      heroVideo.addEventListener("error", function () {
+        heroVideo.style.display = "none";
+      }, true);
+    }
   }
 
   /* ---------- Right-edge dot nav ---------- */
