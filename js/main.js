@@ -103,6 +103,33 @@
     }
   }
 
+  /* ---------- Testimonial video: play/pause on scroll, respect reduced motion ---------- */
+  var testimonialVideo = document.querySelector(".testimonial-video");
+  if (testimonialVideo) {
+    if (prefersReducedMotion) {
+      testimonialVideo.removeAttribute("autoplay");
+    } else {
+      testimonialVideo.addEventListener("error", function () {
+        testimonialVideo.style.display = "none";
+      }, true);
+      if ("IntersectionObserver" in window) {
+        var testimonialObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                testimonialVideo.play().catch(function () {});
+              } else {
+                testimonialVideo.pause();
+              }
+            });
+          },
+          { threshold: 0.4 }
+        );
+        testimonialObserver.observe(testimonialVideo);
+      }
+    }
+  }
+
   /* ---------- Right-edge dot nav ---------- */
   var dotLinks = document.querySelectorAll(".dot-nav a");
   if (dotLinks.length) {
