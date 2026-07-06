@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="js-disabled">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Verma Motwani &amp; Co.</title>
+<meta name="description" content="Contact Verma Motwani & Co. in New Delhi, Mumbai or Bengaluru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-name">Verma Motwani &amp; Co.</span>
+      <span class="brand-mark">VM&amp;CO</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="practice-areas.html">Practice Areas</a>
+      <a href="people.html">People</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <span class="eyebrow">Menu</span>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="practice-areas.html">Practice Areas</a>
+    <a href="people.html">People</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
+
+<main>
+
+  <header class="page-header">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Start a conversation with the firm.</h1>
+      <p>Tell us briefly about your requirement and a partner from the relevant practice group will
+        respond directly.</p>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="container contact-grid">
+
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="organisation">Organisation</label>
+            <input type="text" id="organisation" name="organisation" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="practice-area">Practice Area</label>
+            <select id="practice-area" name="practice-area">
+              <option value="">Select a practice area&hellip;</option>
+              <option value="ma">Mergers &amp; Acquisitions</option>
+              <option value="pe-vc">Private Equity &amp; Venture Capital</option>
+              <option value="capital-markets">Capital Markets</option>
+              <option value="banking-finance">Banking &amp; Finance</option>
+              <option value="competition">Competition Law</option>
+              <option value="tax">Tax</option>
+              <option value="commercial-litigation">Commercial Litigation</option>
+              <option value="arbitration">International Arbitration</option>
+              <option value="insolvency">Insolvency &amp; Restructuring</option>
+              <option value="white-collar">White Collar &amp; Investigations</option>
+              <option value="employment">Employment Law</option>
+              <option value="real-estate">Real Estate</option>
+              <option value="technology">Technology &amp; Data Privacy</option>
+              <option value="healthcare">Healthcare &amp; Life Sciences</option>
+              <option value="energy">Energy &amp; Infrastructure</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <p class="form-note">This form does not constitute an advocate-client relationship. See our
+            <a href="#" class="text-link" style="display:inline;">disclaimer</a>.</p>
+          <button type="submit" class="btn btn-solid">Send Enquiry</button>
+
+          <div class="confirm-msg" role="status" aria-live="polite">
+            <h3>Thank you &mdash; your enquiry has been noted.</h3>
+            <p>A member of the relevant practice group will get back to you shortly. This form is not
+              monitored for urgent matters.</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="offices reveal">
+        <div class="office-block">
+          <h3>New Delhi</h3>
+          <span class="role-tag">Head Office</span>
+          <p>4th Floor, Statesman House, Barakhamba Road, Connaught Place, New Delhi 110001</p>
+          <p>+91 11 4123 4567</p>
+        </div>
+        <div class="office-block">
+          <h3>Mumbai</h3>
+          <span class="role-tag">Regional Office</span>
+          <p>Level 12, One Indiabulls Centre, Tower 2, Lower Parel, Mumbai 400013</p>
+          <p>+91 22 6789 2345</p>
+        </div>
+        <div class="office-block">
+          <h3>Bengaluru</h3>
+          <span class="role-tag">Regional Office</span>
+          <p>3rd Floor, Prestige Meridian 2, M.G. Road, Bengaluru 560001</p>
+          <p>+91 80 4567 8901</p>
+        </div>
+        <div class="office-block">
+          <h3>General Enquiries</h3>
+          <span class="role-tag">Correspondence</span>
+          <p><a href="mailto:contact@vermamotwani.example">contact@vermamotwani.example</a></p>
+          <p>Monday&ndash;Friday, 9:30 AM&ndash;6:30 PM IST</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Verma Motwani &amp; Co.</div>
+        <p>A full-service Indian law firm advising on corporate, disputes and regulatory matters since
+          1994, with an on-the-ground presence across Delhi, Mumbai and Bengaluru.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="practice-areas.html">Practice Areas</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Offices</h4>
+        <ul>
+          <li>New Delhi</li>
+          <li>Mumbai</li>
+          <li>Bengaluru</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:contact@vermamotwani.example">contact@vermamotwani.example</a></li>
+          <li><a href="tel:+911141234567">+91 11 4123 4567</a></li>
+          <li><a href="contact.html">Enquiries &amp; General Counsel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Verma Motwani &amp; Co. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
