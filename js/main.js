@@ -46,6 +46,10 @@
     mobileNav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", closeNav);
     });
+    var mobileCloseBtn = mobileNav.querySelector(".mobile-close-btn");
+    if (mobileCloseBtn) {
+      mobileCloseBtn.addEventListener("click", closeNav);
+    }
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeNav();
     });
