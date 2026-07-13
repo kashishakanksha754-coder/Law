@@ -648,6 +648,7 @@ input, textarea, select { font-family: inherit; }
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 2.5rem;
   padding-bottom: 3.5rem;
+  border-top: 1px solid var(--line-on-dark);
   border-bottom: 1px solid var(--line-on-dark);
 }
 .footer-col h4 {
@@ -1503,7 +1504,6 @@ input, textarea, select { font-family: inherit; }
 /* ---------- Footer: closing statement + expanded columns ---------- */
 .footer-cta {
   padding: 4.5rem 0 3.5rem;
-  border-bottom: 1px solid var(--line-on-dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
