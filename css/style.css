@@ -851,6 +851,7 @@ input, textarea, select { font-family: inherit; }
   grid-template-columns: repeat(4, 1fr);
   gap: 1.6rem;
 }
+.people-grid.people-grid-3col { grid-template-columns: repeat(3, 1fr); }
 .person-card {
   position: relative;
   border: 1px solid var(--line);
