@@ -564,7 +564,9 @@ input, textarea, select { font-family: inherit; }
 }
 .pillar.reverse .pillar-grid { direction: rtl; }
 .pillar.reverse .pillar-grid > * { direction: ltr; }
-.pillar-text p { max-width: 460px; color: var(--ink-soft); }
+.pillar-text p { max-width: 640px; color: var(--ink-soft); }
+.pillar-text p + p { margin-top: 1em; }
+.pillar + .pillar { border-top: 1px solid var(--line); }
 .pillar.on-dark .pillar-text p { color: rgba(245,248,252,.72); }
 .pillar-text h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
 

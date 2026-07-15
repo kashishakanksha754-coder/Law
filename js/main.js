@@ -247,48 +247,6 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  /* ---------- People page: filter + search ---------- */
-  var peopleGrid = document.querySelector("[data-people-grid]");
-  if (peopleGrid) {
-    var pills = document.querySelectorAll(".filter-pill");
-    var searchInput = document.querySelector(".people-search input");
-    var cards = peopleGrid.querySelectorAll(".person-card");
-    var emptyMsg = document.querySelector(".people-empty");
-    var activeGroup = "all";
-
-    function applyFilters() {
-      var query = searchInput ? searchInput.value.trim().toLowerCase() : "";
-      var visibleCount = 0;
-      cards.forEach(function (card) {
-        var group = card.getAttribute("data-group");
-        var name = (card.getAttribute("data-name") || "").toLowerCase();
-        var matchesGroup = activeGroup === "all" || group === activeGroup;
-        var matchesSearch = query === "" || name.indexOf(query) !== -1;
-        var visible = matchesGroup && matchesSearch;
-        card.hidden = !visible;
-        if (visible) visibleCount++;
-      });
-      if (emptyMsg) {
-        emptyMsg.classList.toggle("is-visible", visibleCount === 0);
-      }
-    }
-
-    pills.forEach(function (pill) {
-      pill.addEventListener("click", function () {
-        pills.forEach(function (p) { p.classList.remove("is-active"); });
-        pill.classList.add("is-active");
-        activeGroup = pill.getAttribute("data-filter");
-        applyFilters();
-      });
-    });
-
-    if (searchInput) {
-      searchInput.addEventListener("input", applyFilters);
-    }
-
-    applyFilters();
-  }
-
   /* ---------- Contact form fake-submit ---------- */
   var contactForm = document.querySelector(".contact-form");
   if (contactForm) {
