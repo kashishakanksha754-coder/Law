@@ -761,6 +761,7 @@ input, textarea, select { font-family: inherit; }
 .practice-group { padding: 5rem 0; }
 .practice-group:nth-child(even) { background: var(--ivory-2); }
 .group-head { max-width: 640px; margin-bottom: 3rem; }
+.practice-detail-section { scroll-margin-top: calc(var(--header-h) + 24px); }
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
