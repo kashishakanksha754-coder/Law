@@ -1045,6 +1045,67 @@ input, textarea, select { font-family: inherit; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
 
+/* ---------- Contact page: elevated detail/form/map cards ---------- */
+.contact-section { background: var(--ivory-2); }
+.contact-details-card,
+.contact-form-card {
+  background: var(--ivory);
+  padding: 2.8rem 2.6rem;
+  border-top: 3px solid var(--oxblood);
+  box-shadow: 0 18px 32px rgba(16,35,63,.08);
+}
+.contact-details-card h2,
+.contact-form-card h2 { font-size: 1.6rem; margin-bottom: .4em; }
+.contact-details-card > p,
+.card-subtext { color: var(--ink-soft); margin-bottom: 2.2rem; }
+
+.contact-detail-item { display: flex; align-items: flex-start; gap: 1.1rem; margin-bottom: 1.8rem; }
+.contact-detail-item:last-child { margin-bottom: 0; }
+.detail-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink-navy);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-icon svg { width: 20px; height: 20px; }
+.contact-detail-item h3 {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: .3em;
+}
+.contact-detail-item p { color: var(--ink); margin: 0; }
+.contact-detail-item p a { color: var(--ink); }
+.contact-detail-item p a:hover { color: var(--oxblood); }
+
+.map-card { background: var(--ivory); box-shadow: 0 18px 32px rgba(16,35,63,.08); overflow: hidden; }
+.map-card .map-embed { border: 0; }
+.map-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.6rem 2rem;
+  font-size: .92rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
+.map-card-footer .btn-outline { border-color: rgba(22,34,58,.3); color: var(--ink); }
+.map-card-footer .btn-outline:hover { border-color: var(--oxblood); color: var(--oxblood);
+}
+@media (max-width: 900px) {
+  .contact-details-card, .contact-form-card { padding: 2.2rem 1.8rem; }
+  .map-card-footer { padding: 1.4rem; }
+}
+
 /* ---------- Utility page-width sections ---------- */
 .section-tight { max-width: 720px; }
 .visually-hidden {
