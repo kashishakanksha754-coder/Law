@@ -1011,6 +1011,11 @@ input, textarea, select { font-family: inherit; }
 }
 .field textarea { resize: vertical; min-height: 140px; }
 .form-note { font-size: .8rem; color: var(--ink-soft); margin-top: -.5rem; margin-bottom: 1.5rem; }
+.field-row { display: flex; gap: 1rem; }
+.field-row .field { flex: 1; }
+@media (max-width: 560px) {
+  .field-row { flex-direction: column; gap: 0; }
+}
 .confirm-msg {
   display: none;
   background: var(--ivory-2);
