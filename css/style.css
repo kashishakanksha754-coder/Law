@@ -1085,6 +1085,7 @@ input, textarea, select { font-family: inherit; }
 .contact-detail-item p a { color: var(--ink); }
 .contact-detail-item p a:hover { color: var(--oxblood); }
 
+.contact-map-wrap { margin-top: 5.5rem; }
 .map-card { background: var(--ivory); box-shadow: 0 18px 32px rgba(16,35,63,.08); overflow: hidden; }
 .map-card .map-embed { border: 0; }
 .map-card-footer {
