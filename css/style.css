@@ -1741,4 +1741,37 @@ header.page-header-photo span.eyebrow {
 }
 
 
+/* Styling Careers form wrap exactly like the Contact form card */
+.contact-form-wrap {
+  background: var(--ivory); 
+  padding: 3rem 2.8rem;
+  border-top: 4px solid var(--oxblood); 
+  box-shadow: 0 10px 30px rgba(16, 35, 63, 0.05); 
+  border-radius: 8px; 
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
 
+.contact-form-wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(16, 35, 63, 0.12);
+}
+
+.contact-form-wrap h2 {
+  font-size: 1.8rem; 
+  margin-bottom: .3em; 
+  color: var(--ink-navy);
+}
+
+/* Targeting the specific description text under the heading to match contact form */
+.contact-form-wrap > p.form-note {
+  color: var(--ink-soft); 
+  margin-bottom: 2.5rem; 
+  font-size: 1rem;
+}
+
+/* Mobile responsive padding like the contact form */
+@media (max-width: 900px) {
+  .contact-form-wrap { 
+    padding: 2.5rem 2rem; 
+  }
+}
