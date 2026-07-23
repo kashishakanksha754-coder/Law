@@ -1773,15 +1773,11 @@ header.page-header-photo span.eyebrow {
   }
 }
 
-
-
-/* Change hover color for CTA and Footer buttons to white */
 .footer-cta .btn-outline:hover,
 .cta-photo .btn-outline:hover {
   color: #ffffff; 
 }
 
-/* Change hover color for CTA (Homepage + Inner Pages) and Footer buttons to white */
 .footer-cta .btn-outline:hover,
 .cta-photo .btn-outline:hover,
 .cta-band .btn-outline:hover {
