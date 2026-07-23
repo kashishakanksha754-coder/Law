@@ -1741,7 +1741,6 @@ header.page-header-photo span.eyebrow {
 }
 
 
-/* Styling Careers form wrap exactly like the Contact form card */
 .contact-form-wrap {
   background: var(--ivory); 
   padding: 3rem 2.8rem;
@@ -1762,14 +1761,12 @@ header.page-header-photo span.eyebrow {
   color: var(--ink-navy);
 }
 
-/* Targeting the specific description text under the heading to match contact form */
 .contact-form-wrap > p.form-note {
   color: var(--ink-soft); 
   margin-bottom: 2.5rem; 
   font-size: 1rem;
 }
 
-/* Mobile responsive padding like the contact form */
 @media (max-width: 900px) {
   .contact-form-wrap { 
     padding: 2.5rem 2rem; 
