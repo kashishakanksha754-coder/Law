@@ -1845,3 +1845,28 @@ header.page-header-photo span.eyebrow {
 .cta-band .btn-outline:hover {
   color: #ffffff; 
 }
+
+.map-embed {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background: var(--ivory); 
+  border-top: 4px solid var(--oxblood); 
+  box-shadow: 0 10px 30px rgba(16, 35, 63, 0.05); 
+  border-radius: 8px; 
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.map-embed:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(16, 35, 63, 0.12);
+}
+
+.map-embed iframe { 
+  width: 100%; 
+  height: 100%; 
+  min-height: 480px; 
+  display: block; 
+  border: 0; 
+}
