@@ -1,4 +1,4 @@
-/* Verma Motwani & Co. — shared interactions (v2) */
+/* VMR Associates — shared interactions (v2) */
 (function () {
   "use strict";
 
@@ -58,7 +58,7 @@
   /* ---------- Disclaimer overlay (homepage only) ---------- */
   var overlay = document.querySelector(".disclaimer-overlay");
   if (overlay) {
-    var STORAGE_KEY = "vmco-disclaimer-accepted";
+    var STORAGE_KEY = "vmr-disclaimer-accepted";
     var accepted = false;
     try { accepted = sessionStorage.getItem(STORAGE_KEY) === "true"; } catch (err) { accepted = false; }
 
