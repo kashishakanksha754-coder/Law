@@ -130,45 +130,6 @@
     }
   }
 
-  /* ---------- Right-edge dot nav ---------- */
-  var dotLinks = document.querySelectorAll(".dot-nav a");
-  if (dotLinks.length) {
-    var dotSections = [];
-    dotLinks.forEach(function (link) {
-      var id = link.getAttribute("href").replace("#", "");
-      var section = document.getElementById(id);
-      if (section) dotSections.push({ link: link, section: section });
-    });
-
-    dotLinks.forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        var id = link.getAttribute("href").replace("#", "");
-        var target = document.getElementById(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
-        }
-      });
-    });
-
-    if ("IntersectionObserver" in window && dotSections.length) {
-      var dotObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            var match = dotSections.find(function (s) { return s.section === entry.target; });
-            if (!match) return;
-            if (entry.isIntersecting) {
-              dotLinks.forEach(function (l) { l.classList.remove("is-active"); });
-              match.link.classList.add("is-active");
-            }
-          });
-        },
-        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-      );
-      dotSections.forEach(function (s) { dotObserver.observe(s.section); });
-    }
-  }
-
   /* ---------- Count-up stats ---------- */
   var countEls = document.querySelectorAll("[data-count]");
   function animateCount(el) {
